@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: nginx
-    tag: alpine
+    app: {{.Values.image.repository}}
+    tag: {{.Values.image.tag}}
   name: nginx-alpine
   namespace: {{.Values.namespace.name}}
 spec:
