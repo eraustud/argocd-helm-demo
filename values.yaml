@@ -4,7 +4,7 @@ replicas: 3
 image:
   repository: nginx
   tag: alpine
-  pull-policy: IfNotPresent
+  pullPolicy: IfNotPresent
 resources:
   cpu: "50m"
   memory: "256Mi"
