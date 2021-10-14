@@ -10,7 +10,7 @@ spec:
   replicas: {{.Values.replicas}}
   selector:
     matchLabels:
-      app: {{.Values.image.respository}}
+      app: {{.Values.image.repository}}
       tag: {{.Values.image.tag}}
   strategy:
     rollingUpdate:
