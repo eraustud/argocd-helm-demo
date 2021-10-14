@@ -10,8 +10,8 @@ spec:
   replicas: {{.Values.replicas}}
   selector:
     matchLabels:
-      app: nginx
-      tag: alpine
+      app: {{.Values.image.respository}}
+      tag: {{.Values.image.repository}}
   strategy:
     rollingUpdate:
       maxSurge: 25%
