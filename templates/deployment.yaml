@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
-    tag: alpine
+    app: {{Values.image.repository}}
+    tag: {{Values.image.tag}}
   name: nginx-alpine
-  namespace: demo
+  namespace: {{Values.namespace.name}}
 spec:
-  replicas: 3
+  replicas: {{Values.replicas}}
   selector:
     matchLabels:
       app: nginx
@@ -20,10 +20,14 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
-        tag: alpine
+        app: {{Values.image.repository}}
+        tag: {{Values.image.tag}}
     spec:
       containers:
-      - image: nginx:alpine
-        imagePullPolicy: IfNotPresent
+      - image: {{Values.image.repository}}:{{Values.image.tag}}
+        imagePullPolicy: {{Values.image.pull-policy}}
         name: nginx-alpine
+        resources:
+          limits:
+            cpu: {{Values.resources.cpu}}
+            memory: {{Values.resources.memory}}
